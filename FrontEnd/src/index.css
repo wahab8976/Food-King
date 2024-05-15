@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#navbar {
+  backdrop-filter: blur(20px);
+  background-color: rgba(4, 4, 4, 0.792); /* Fallback color */
+}
+
+@media screen and (max-width: 768px) {
+  #navbar {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    background-color: rgba(4, 4, 4, 0.792); /* Fallback color */
+    padding: 0 20px;
+  }
+  #menu {
+    display: block;
+    padding-top: 10px;
+  }
+  #navMenu {
+    display: none;
+  }
+
+  #slider {
+    display: block;
+    position: absolute;
+    top: -100vh;
+    right: 30vw;
+    z-index: 130;
+    transition: top 0.5s ease; /* Smooth transition for the top property */
+  }
+
+  #slider.menuDown {
+    position: fixed;
+    top: 0; /* Bring the menu to the top of the viewport */
+    z-index: 130;
+  }
+  #contactForm {
+    flex-direction: column;
+    padding-top: 150px;
+    gap: 30px;
+  }
+  #contactForm > div {
+    width: 80vw;
+    border-radius: 8px;
+  }
+  #contactForm form input {
+    min-width: 85%;
+  }
+  #callCard {
+    position: static;
+    height: auto;
+  }
+  #Form1 {
+    height: 500px;
+  }
+}
+
+.child {
+  transition: transform 0.3s ease;
+}
+.parent :hover .child {
+  transform: rotate(180deg);
+}
+
+@media screen and (max-width: 555px) {
+  .parent {
+    width: 70vw;
+  }
+  .parent:hover {
+    width: calc(70vw + 30px);
+  }
+}
+/* 
+@media screen and (max-width: 1183px) {
+  #foodFlex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+} */
+@media screen and (max-width: 540px) {
+  .LIs {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 383px) {
+  .LIs {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 520px) {
+  #slider {
+    display: block;
+    position: absolute;
+    top: -100vh;
+    right: 80vw;
+    width: 80vw;
+    z-index: 130;
+    transition: top 0.5s ease; /* Smooth transition for the top property */
+  }
+
+  #slider.menuDown {
+    position: fixed;
+    top: 0vh; /* Bring the menu to the top of the viewport */
+    z-index: 130;
+    right: 80vw;
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #content {
+    margin-left: 8px;
+    padding-top: 150px;
+  }
+  #content h1 {
+    padding-bottom: 8px;
+  }
+}
+
+.topBanner {
+  backdrop-filter: blur(20px);
+  background-color: rgba(4, 4, 4, 0.792);
+}
