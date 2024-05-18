@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./pages/Contact.jsx";
 import Menu from "./pages/Menu.jsx";
 import Dashboard from "../src/pages/Dashboard.jsx";
+import { NextUIProvider } from "@nextui-org/react";
 
 const router = createBrowserRouter([
   {
@@ -27,5 +28,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <NextUIProvider>
+    <RouterProvider router={router} />
+  </NextUIProvider>
 );

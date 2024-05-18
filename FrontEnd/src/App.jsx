@@ -1,8 +1,8 @@
-// import dummyData from "../dummyData";
 import background1 from "../public/uploads/background.jpg";
 import CARDLANDING from "./components/CARDLANDING";
 import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function App() {
   const [cardData, setCardData] = useState([]);
@@ -12,6 +12,7 @@ function App() {
       const response = await fetch("http://localhost:3000");
       const data = await response.json();
       setCardData(data);
+      console.log(data);
     };
     fetchData();
   }, []);
@@ -38,9 +39,11 @@ function App() {
               <h1 className="text-[60px]">Life's too Short</h1>
               <h1 className="text-[60px]">for Boring Food</h1>
               <p className="text-[20px]">Dive into a pack of deliciousness!</p>
-              <button className="bg-red-600 text-white py-0 px-8 transition-all duration-300 hover:bg-red-700">
-                Order Now
-              </button>
+              <Link to="/menu">
+                <button className="bg-red-600 text-white py-0 px-8 transition-all duration-300 hover:bg-red-700">
+                  Order Now
+                </button>
+              </Link>
             </div>
           </div>
           <div className="text-white flex flex-col items-center py-4">

@@ -1,25 +1,26 @@
 import React from "react";
+import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import burger from "../../public/uploads/Burger.jpeg";
 
-const CARD = ({title, desc,img}) => {
+export default function CARD({ price, img, title }) {
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure>
-          <img
-            src={img}
-            alt="Shoes"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p>{desc}</p>
-          <div className="card-actions justify-center">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Card id="card" className="py-4 w-[260px]">
+      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+        <button className="bg-red-600 p-1 rounded-lg text-white text-tiny uppercase font-bold">
+          Get Now
+        </button>
+        {/* <p>Daily Mix</p> */}
+        <small className="text-default-500">Rs. {price}1200</small>
+        <h4 className="font-bold text-large">{title}Chicken Tika</h4>
+      </CardHeader>
+      <CardBody className="overflow-visible py-2">
+        <Image
+          alt="Card background"
+          className="object-cover rounded-xl"
+          src={burger}
+          width={270}
+        />
+      </CardBody>
+    </Card>
   );
-};
-
-export default CARD;
+}

@@ -5,6 +5,20 @@
   backdrop-filter: blur(20px);
   background-color: rgba(4, 4, 4, 0.792); /* Fallback color */
 }
+@media screen and (max-width: 749px) {
+  #centerControl {
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+  }
+  #tab {
+    position: sticky;
+    bottom: 200px;
+  }
+  #card {
+    width: 250px;
+  }
+}
 
 @media screen and (max-width: 768px) {
   #navbar {
