@@ -3,17 +3,15 @@ const app = express();
 const port = 3000;
 const connectDB = require("./DB/connect");
 const cors = require("cors");
-const adminRoutes = require("./routes/card.routes");
 const cardSchema = require("./models/card.model");
+const cardRoutes = require("./routes/card.routes");
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(cors());
 
-// Admin routes
-app.use("/admin/api", adminRoutes);
-app.use("/")
 
+app.use("/admin/api/card", cardRoutes);
 
 // Sample route to get all cards
 app.get("/", async (req, res) => {
