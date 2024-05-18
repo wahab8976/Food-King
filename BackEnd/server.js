@@ -11,7 +11,9 @@ app.use(express.json());
 app.use(cors());
 
 // Admin routes
-app.use("/api/admin", adminRoutes);
+app.use("/admin/api", adminRoutes);
+app.use("/")
+
 
 // Sample route to get all cards
 app.get("/", async (req, res) => {
