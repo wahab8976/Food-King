@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AdminNavbar = () => {
   return (
-    <div>
+    <div className="text-white">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -17,7 +17,7 @@ const AdminNavbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="white"
               >
                 <path
                   strokeLinecap="round"
@@ -42,7 +42,7 @@ const AdminNavbar = () => {
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost text-xl">Your Dashboard</a>
+          <a className="btn btn-ghost text-xl text-white">Your Dashboard</a>
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">
@@ -52,7 +52,7 @@ const AdminNavbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="white"
               >
                 <path
                   strokeLinecap="round"

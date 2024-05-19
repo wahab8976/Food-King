@@ -34,9 +34,9 @@ const Navbar = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
-        <li id="menu" className="cursor-pointer hidden">
+        <span id="menu" className="cursor-pointer hidden">
           <img src={hamburger} alt="Menu" onClick={handleOnclick} />
-        </li>
+        </span>
       </nav>
     </div>
   );

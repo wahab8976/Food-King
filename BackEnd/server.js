@@ -4,14 +4,13 @@ const port = 3000;
 const connectDB = require("./DB/connect");
 const cors = require("cors");
 const cardSchema = require("./models/card.model");
-const cardRoutes = require("./routes/card.routes");
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(cors());
 
-
-app.use("/admin/api/card", cardRoutes);
+app.use("/admin/api/card", require("./routes/card.routes"));
+app.use("/admin/api/item", require("./routes/menu.routes"));
 
 // Sample route to get all cards
 app.get("/", async (req, res) => {

@@ -10,8 +10,8 @@ export default function CARD({ price, img, title }) {
           Get Now
         </button>
         {/* <p>Daily Mix</p> */}
-        <small className="text-default-500">Rs. {price}1200</small>
-        <h4 className="font-bold text-large">{title}Chicken Tika</h4>
+        <small className="text-default-500">Rs. {price}</small>
+        <h4 className="font-bold text-large">{title}</h4>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Image

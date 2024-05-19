@@ -19,34 +19,36 @@ const Slider = () => {
         className="w-[30vw] relative z-50 h-screen bg-red-700 hidden font-bold p-2 transform translate-x-full transition-transform duration-500 ease-in-out"
       >
         <nav className="top-[200px]">
-          <span className="flex justify-between">
+          <div className="flex justify-between">
             <Link to="/">
               <img className="h-[50px] pb-3" src={logo} alt="Logo" />
             </Link>
-            <img onClick={handleCross} src={cross} alt="Close" />
-          </span>
+            <img
+              onClick={handleCross}
+              src={cross}
+              alt="Close"
+              className="cursor-pointer"
+            />
+          </div>
           <hr className="pb-3" />
           <ul className="text-white flex flex-col gap-5 justify-center">
-            <Link to="/menu">
-              <span className="flex gap-9">
-                {" "}
-                <img src={menu} alt="Menu" /> <li>Menu</li>{" "}
-              </span>{" "}
-            </Link>
+            <li>
+              <Link to="/menu" className="flex gap-9">
+                <img src={menu} alt="Menu" /> Menu
+              </Link>
+            </li>
             <hr />
-            <Link to="/deals">
-              <span className="flex gap-9">
-                <img src={deal} alt="Deal" />
-                <li>Hot Deals</li>
-              </span>
-            </Link>
+            <li>
+              <Link to="/deals" className="flex gap-9">
+                <img src={deal} alt="Deal" /> Hot Deals
+              </Link>
+            </li>
             <hr />
-            <Link to="/contact">
-              <span className="flex gap-9">
-                <img src={support} alt="Support" />
-                <li>Contact Us</li>
-              </span>
-            </Link>
+            <li>
+              <Link to="/contact" className="flex gap-9">
+                <img src={support} alt="Support" /> Contact Us
+              </Link>
+            </li>
             <hr />
           </ul>
         </nav>

@@ -1,25 +1,27 @@
 const mongoose = require("mongoose");
-const cardSchema = require("./card.model");
+const Category = require("./category.model");
 
 const menuSchema = new mongoose.Schema({
-  card: {
+  category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: cardSchema,
+    ref: "Category",
     required: true,
   },
   ingredients: {
-    type: [string],
+    type: [String],
   },
   price: {
     type: Number,
     required: [true, "Price is Required"],
   },
-  inStock: {
+  instock: {
     type: Boolean,
     default: true,
+  },
+  image: {
+    type: [String],
     required: [true, "This is a required Field"],
   },
-  
 });
 
 module.exports = mongoose.model("Menu", menuSchema);

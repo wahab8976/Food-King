@@ -6,36 +6,15 @@ import CARD from "../components/CARD";
 const Menu = () => {
   const [isVertical, setIsVertical] = useState(window.innerWidth > 768);
   const [menu, setMenu] = useState([]);
-  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const fetchMenu = async () => {
       const response = await fetch("http://localhost:3000/");
       const loadedData = await response.json();
-      setMenu(loadedData);
       console.log(loadedData);
+      setMenu(loadedData);
     };
     fetchMenu();
-
-    const handleResize = () => {
-      setIsVertical(window.innerWidth > 768);
-    };
-
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
 
   return (
@@ -44,9 +23,7 @@ const Menu = () => {
       <div id="centerControl" className="flex justify-center gap-6">
         <div
           id="tab"
-          className={`overflow-hidden md:fixed relative left-[30px] top-40 transition-opacity duration-300 ${
-            isVisible ? "opacity-100" : "opacity-0"
-          }`}
+          className="overflow-hidden md:fixed relative left-[30px] top-40 transition-opacity duration-300"
         >
           <Tabs
             isVertical={isVertical}
@@ -62,15 +39,9 @@ const Menu = () => {
         </div>
 
         <div className="flex gap-1 md:w-[70vw] w-[90vw] justify-center mt-[100px] flex-wrap">
-          
-            <CARD  />
-            <CARD  />
-            <CARD  />
-            <CARD  />
-            <CARD  />
-            <CARD  />
-            <CARD  />
-          
+          {menu.map((item, index) => {
+            return <CARD key={index} {...item} />;
+          })}
         </div>
       </div>
     </div>
