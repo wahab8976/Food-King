@@ -3,6 +3,7 @@ import CARDLANDING from "./components/CARDLANDING";
 import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { CarouselDemo } from "./components/demo/CarouselDemo";
 
 function App() {
   const [cardData, setCardData] = useState([]);
@@ -54,13 +55,17 @@ function App() {
 
         {/* Mapping over Data to be comming from backend */}
 
+        <div className="flex mt-3 justify-center ">
+          <CarouselDemo className="" cardData={cardData} />
+        </div>
+
         <div
           id="foodFlex"
           className="flex mb-40 flex-wrap justify-center gap-8 p-6"
         >
-          {cardData.map((card, index) => (
+          {/* {cardData.map((card, index) => (
             <CARDLANDING key={index} {...card} />
-          ))}
+          ))} */}
         </div>
       </div>
     </>

@@ -4,8 +4,8 @@ import burger from "../../public/uploads/Burger.jpeg";
 
 const CARDLANDING = ({ title, description, pic }) => {
   return (
-    <div>
-      <div className="parent hover:cursor-pointer w-[250px] hover:w-[300px] h-[350px] hover:h-[400px] transition-all duration-300 ">
+    <div id="cardLanding">
+      <div className="parent hover:cursor-pointer w-[320px]  h-[350px] hover:h-[400px] transition-all duration-300 ">
         <div className="w-[100%] h-[87%]  ">
           <img
             className="w-[100%] rounded-t-lg h-[100%] object-cover relative z-10"
