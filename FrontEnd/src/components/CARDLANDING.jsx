@@ -1,6 +1,5 @@
 import React from "react";
 import dropdown from "../../public/icons/dropdown.svg";
-import burger from "../../public/uploads/Burger.jpeg";
 
 const CARDLANDING = ({ title, description, pic }) => {
   return (
