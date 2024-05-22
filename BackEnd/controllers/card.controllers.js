@@ -5,10 +5,10 @@ const handleAddCard = async (req, res) => {
   try {
     const newItem = new cardSchema(req.body);
     await newItem.save();
-    res.status(201).json(newItem);
+    return res.status(201).json(newItem);
   } catch (error) {
     console.error("Error Adding Item:", error);
-    res.status(400).json({ msg: "Error Adding Item", error });
+    return res.status(400).json({ msg: "Error Adding Item", error });
   }
 };
 
@@ -47,8 +47,5 @@ const handleEditCard = async (req, res) => {
     res.status(500).json({ msg: "Internal Server Error" });
   }
 };
-
-
-
 
 module.exports = { handleAddCard, handleDeleteCard, handleEditCard };

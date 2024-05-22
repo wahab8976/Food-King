@@ -8,6 +8,7 @@ import Menu from "./pages/Menu.jsx";
 import Dashboard from "../src/pages/Dashboard.jsx";
 import { NextUIProvider } from "@nextui-org/react";
 import Deal from "./pages/Deal.jsx";
+import Login from "./pages/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/deals",
-    element : <Deal/>
-  }
+    element: <Deal />,
+  },
+  {
+    path: "/user/login",
+    element: <Login />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

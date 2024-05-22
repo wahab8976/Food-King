@@ -33,6 +33,11 @@ const Navbar = () => {
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
+          <li>
+            <button className="bg-red-700 py-1 rounded-md px-2">
+              <Link to="/user/login">Login</Link>
+            </button>
+          </li>
         </ul>
         <span id="menu" className="cursor-pointer hidden">
           <img src={hamburger} alt="Menu" onClick={handleOnclick} />

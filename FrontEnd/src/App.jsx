@@ -28,7 +28,7 @@ function App() {
         >
           <div
             id="background"
-            className=" h-screen text-white "
+            className="h-screen text-white"
             style={{
               backgroundImage: `url(${background1})`,
               backgroundSize: "cover",
@@ -53,9 +53,11 @@ function App() {
           </div>
         </div>
 
-        {/* Mapping over Data to be comming from backend */}
+        {/* Mapping over Data coming from backend */}
 
-        <div className="flex mt-3 justify-center ">
+        
+
+        <div className="flex mt-3 justify-center">
           <CarouselDemo className="" cardData={cardData} />
         </div>
 

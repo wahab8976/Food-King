@@ -11,6 +11,7 @@ app.use(cors());
 
 app.use("/admin/api/card", require("./routes/card.routes"));
 app.use("/admin/api/item", require("./routes/menu.routes"));
+app.use("/user/api", require("./routes/user.routes"));
 
 // Sample route to get all cards
 app.get("/", async (req, res) => {

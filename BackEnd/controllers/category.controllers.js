@@ -5,9 +5,9 @@ const handleAddCategory = async (req, res) => {
   try {
     const newCategory = new categorySchema(req.body);
     await newCategory.save();
-    res.status(201).json(newCategory);
+    return res.status(201).json(newCategory);
   } catch (error) {
-    res.json({ msg: "Error Adding a Category" });
+    return res.json({ msg: "Error Adding a Category" });
     console.error(error);
   }
 };
