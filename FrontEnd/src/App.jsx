@@ -4,23 +4,29 @@ import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CarouselDemo } from "./components/demo/CarouselDemo";
+import CarouselReal from "./components/CarouselReal";
+import NewItemCard from "./components/NewItemCard";
 
 function App() {
-  const [cardData, setCardData] = useState([]);
-
+  const [slides, setSlides] = useState([]);
+  const [newItem, setNewItem] = useState(null);
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:3000");
-      const data = await response.json();
-      setCardData(data);
-      console.log(data);
-    };
-    fetchData();
+    try {
+      const fetchData = async () => {
+        const response = await fetch("http://localhost:3000");
+        const data = await response.json();
+        setSlides(data);
+        console.log(data);
+      };
+      fetchData();
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   return (
     <>
-      <div>
+      <div className="bg-gray-800 h-[150%]">
         <Navbar />
         <div
           className="overflow-x-hidden"
@@ -55,19 +61,14 @@ function App() {
 
         {/* Mapping over Data coming from backend */}
 
-        
+        {newItem && (
+          <div className="flex justify-center">
+            <NewItemCard newItem={newItem} />
+          </div>
+        )}
 
         <div className="flex mt-3 justify-center">
-          <CarouselDemo className="" cardData={cardData} />
-        </div>
-
-        <div
-          id="foodFlex"
-          className="flex mb-40 flex-wrap justify-center gap-8 p-6"
-        >
-          {/* {cardData.map((card, index) => (
-            <CARDLANDING key={index} {...card} />
-          ))} */}
+          <CarouselReal slides={slides} />
         </div>
       </div>
     </>
