@@ -5,16 +5,21 @@ import DealCards from "./DealCards";
 import { useState, useEffect } from "react";
 
 const Deal = () => {
-  const [menu, setMenu] = useState([]);
+  const [deal, setDeal] = useState([]);
 
   useEffect(() => {
-    const fetchMenu = async () => {
-      const response = await fetch("http://localhost:3000/");
-      const loadedData = await response.json();
-      console.log(loadedData);
-      setMenu(loadedData);
-    };
-    fetchMenu();
+    try {
+      const fetchMenu = async () => {
+        const response = await fetch(
+          "http://localhost:3000/menu/api/item/deals"
+        );
+        const loadedData = await response.json();
+        setDeal(loadedData);
+      };
+      fetchMenu();
+    } catch (error) {
+      throw new Error 
+    }
   }, []);
 
   return (
@@ -23,7 +28,7 @@ const Deal = () => {
         <Navbar />
         <Slider />
         <div className="flex flex-wrap justify-center pt-24 gap-4">
-          {menu.map((item, index) => {
+          {deal.map((item, index) => {
             return <DealCards key={index} {...item} />;
           })}
         </div>

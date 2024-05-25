@@ -15,7 +15,6 @@ const handleAddCard = async (req, res) => {
 const handleDeleteCard = async (req, res) => {
   try {
     const cardId = req.params.id;
-    // Check if the cardId is a valid ObjectId
     if (!mongoose.Types.ObjectId.isValid(cardId)) {
       return res.status(400).json({ msg: "Invalid Card ID" });
     }
@@ -29,7 +28,6 @@ const handleDeleteCard = async (req, res) => {
     res.status(500).json({ msg: "Something went wrong", error });
   }
 };
-
 const handleEditCard = async (req, res) => {
   try {
     const cardId = req.params.id;

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const connectDB = require("./DB/connect");
+const connectDB = require("./DataBase/connect");
 const cors = require("cors");
 const cardSchema = require("./models/card.model");
 
@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/admin/api/card", require("./routes/card.routes"));
-app.use("/admin/api/item", require("./routes/menu.routes"));
+app.use("/menu/api/item", require("./routes/menu.routes"));
+app.use("/menu/api/item/deals", require("./routes/deal.routes"));
 app.use("/user/api", require("./routes/user.routes"));
 
 // Sample route to get all cards

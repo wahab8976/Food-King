@@ -1,14 +1,10 @@
 const mongoose = require("mongoose");
-const Category = require("./category.model");
 
 const menuSchema = new mongoose.Schema({
   category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
+    type: String,
+    enum: ["pizza", "burger", "chicken"],
     required: true,
-  },
-  ingredients: {
-    type: [String],
   },
   price: {
     type: Number,
@@ -19,7 +15,7 @@ const menuSchema = new mongoose.Schema({
     default: true,
   },
   image: {
-    type: [String],
+    type: String,
     required: [true, "This is a required Field"],
   },
 });

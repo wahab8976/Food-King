@@ -1,11 +1,11 @@
 const express = require("express");
-const { handleItemAdd } = require("../controllers/menu.conrollers");
+const {
+  handleItemAdd,
+  handleShowMenu,
+} = require("../controllers/menu.contollers");
 const menuRoutes = express.Router();
 
 menuRoutes.post("/add", handleItemAdd);
-
-
-
-
+menuRoutes.get("/", handleShowMenu);
 
 module.exports = menuRoutes;

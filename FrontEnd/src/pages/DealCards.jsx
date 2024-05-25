@@ -1,15 +1,23 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import imag from "../../public/uploads/Burger.jpeg";
 
-const DealCards = ({ img, title, description, price, Off }) => {
+const DealCards = ({
+  img,
+  title,
+  description,
+  originalprice,
+  discountedprice,
+  percentageoff,
+  Off,
+}) => {
   const [dealOff, setdealOff] = useState(true);
   const [inStock, setInStock] = useState(true);
+
   return (
     <div className="text-white ">
       <div className="card  bg-base-100 shadow-xl w-[90vw] md:w-[40vw]">
         <figure>
-          <img className="w-[100%]" src={imag} alt={title} />
+          <img className="w-[100%]" src={img} alt={title} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
@@ -17,11 +25,11 @@ const DealCards = ({ img, title, description, price, Off }) => {
           {inStock ? (
             <div>
               <div className="card-actions items-center justify-around">
-                <span className="line-through">Rs. 1200</span>
+                <span className="line-through">Rs. {originalprice}</span>
                 <div className="flex justify-start">
-                  {dealOff && <span>Rs. 1000</span>}
+                  {dealOff && <span>Rs.{discountedprice}</span>}
                 </div>
-                <div>-10% Off</div>
+                <div>-{percentageoff} Off</div>
                 <button className="btn btn-primary">Get Now</button>
               </div>
             </div>

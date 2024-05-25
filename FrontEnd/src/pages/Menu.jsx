@@ -1,49 +1,91 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import { Tabs, Tab } from "@nextui-org/tabs";
-import CARD from "../components/CARD";
+import React from "react";
+import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import CARDREAL from "../components/CARDREAL";
+import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
+import Slider from "@/components/Slider";
 
 const Menu = () => {
-  const [isVertical, setIsVertical] = useState(window.innerWidth > 768);
+  const [selected, setSelected] = useState("burgers");
   const [menu, setMenu] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const response = await fetch("http://localhost:3000/");
-      const loadedData = await response.json();
-      console.log(loadedData);
-      setMenu(loadedData);
+      try {
+        const response = await fetch("http://localhost:3000/menu/api/item");
+        if (!response.ok) {
+          const finalResponse = await response.json();
+          setError(finalResponse.error);
+          return;
+        }
+        const loadedData = await response.json();
+        setMenu(loadedData);
+      } catch (error) {
+        setError("An error occurred while fetching the menu.");
+      }
     };
+
     fetchMenu();
   }, []);
 
   return (
     <div className="">
       <Navbar />
-      <div id="centerControl" className="flex justify-center gap-6">
-        <div
-          id="tab"
-          className="overflow-hidden md:fixed relative left-[30px] top-40 transition-opacity duration-300"
-        >
+      <Slider />
+      <section className=" flex items-center pt-16 justify-center">
+        <div className="w-full max-w-screen-md">
+          {error && <div className="text-red-800">{error}</div>}
           <Tabs
-            isVertical={isVertical}
-            color="warning"
-            aria-label="Tabs colors"
-            radius="lg"
-            variant={isVertical ? "solid" : "underlined"}
+            aria-label="Options"
+            selectedKey={selected}
+            onSelectionChange={setSelected}
+            className="flex justify-center pt-3  z-40"
+            variant="underlined"
+            color="default"
           >
-            <Tab key="pizzas" title="Pizzas" />
-            <Tab key="wraps" title="Wraps" />
-            <Tab key="chicken" title="Chicken" />
+            <Tab key="pizza" title="Pizzas">
+              <Card>
+                <CardBody>
+                  <div className="w-full pt-6 flex flex-wrap gap-2 justify-center">
+                    {menu
+                      .filter((item) => item.category === "pizza")
+                      .map((item, index) => (
+                        <CARDREAL key={index} {...item} />
+                      ))}
+                  </div>
+                </CardBody>
+              </Card>
+            </Tab>
+            <Tab key="burger" title="Burgers">
+              <Card>
+                <CardBody>
+                  <div className="w-full pt-6 flex flex-wrap gap-2 justify-center">
+                    {menu
+                      .filter((item) => item.category === "burgers")
+                      .map((item, index) => (
+                        <CARDREAL key={index} {...item} />
+                      ))}
+                  </div>
+                </CardBody>
+              </Card>
+            </Tab>
+            <Tab key="chicken" title="Chicken">
+              <Card>
+                <CardBody>
+                  <div className="w-full pt-6 flex flex-wrap gap-2 justify-center">
+                    {menu
+                      .filter((item) => item.category === "chicken")
+                      .map((item, index) => (
+                        <CARDREAL key={index} {...item} />
+                      ))}
+                  </div>
+                </CardBody>
+              </Card>
+            </Tab>
           </Tabs>
         </div>
-
-        <div className="flex gap-1 md:w-[70vw] w-[90vw] justify-center mt-[100px] flex-wrap">
-          {menu.map((item, index) => {
-            return <CARD key={index} {...item} />;
-          })}
-        </div>
-      </div>
+      </section>
     </div>
   );
 };
